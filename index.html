@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-us>
+<head>
+  <title>KhanHub</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page" id="Home">
+  <h1>KhanHub</h1>
+  <h2>Coding. Born Again.</h2>
+  <button class="About-button intro-hover-button"><div>Get Started</div></button>
+  <button class="Projects-button intro-hover-button"><div style="transform:skewX(-30deg)">Create</div></button>
+  <button class="Credits-button intro-hover-button"><div>Credits</div></button>
+</div>
+<div class="page" id="About">
+  <h1>About</h1>
+  <p>The true reason I made KhanHub was because I knew Khan Academy's Coding Platform to be very limited in functionality. The first one I made was okay, but full of bugs and problems that limited users' abilities to to as much as they wanted. Now, I have made the second version. I hope you all enjoy.</p>
+  <h2>Features</h2>
+  <div id="feature-wrapper">
+    <div class="feature">
+      <img src="https://cdn.kastatic.org/images/ohnoes-happy.png" alt="ohnoes-happy-avatar">
+      <p>Oh Noes won't bother you when you are coding. Have the time of your life when you are coding live websites. One thing bad about him not being there? You aren't notified of errors.</p>
+    </div>
+    <div class="feature">
+      <img src="https://www.kasandbox.org/programming-images/creatures/Hopper-Cool.png" alt="hopper-cool-avatar">
+      <p>Keep your cool while coding with an in-browser preview as well as a live preview. You can also deploy your live websites for others to see.</p>
+    </div>
+    <div class="feature">
+      <img src="https://www.kasandbox.org/programming-images/creatures/Winston.png" alt="winston-avatar">
+      <p>Customize your coding experience with different coding themes while still coding in a simillarly Khan Academy editor.</p>
+    </div>
+  </div>
+  <h2>Differences from Version One</h2>
+  <ul>
+    <li>
+      <h4>Live Preview Updates as fast as you code</h4>
+      <p>Before, I said that updating the live preview was impossible without a backend language like nodejs, php, or another server side language. I was wrong. Now, the live preview updates as fast as you can code!</p>
+    </li>
+    <li>
+      <h4>Perfect In-browser Preview</h4>
+      <p>In version One, when you used CSS in the editor, it would modify the external elements as well and you couldn't use JS in there either. Now, you can code any type of CSS in the editor without worrying about changing the external CSS and you can use JS in there as well. Unless you use some special <code>window</code> DOM hacks, you cannot mutate the external appearance of KhanHub V2 in any way.</p>
+    </li>
+    <li>
+      <h4>Return of the Default Theme</h4>
+      <p>For some reason, in Version One, when you changed the theme of the editor to something other than the Default Theme, you couldn't change it back. I have changed that and added every single editor theme there possibly was. Now you have a wider choice variety to choose from!</p>
+    </li>
+    <li>
+      <h4>PJS templates</h4>
+      <p>I implemented a PJS template in KhanHub V2 because so many people were asking for it. It's not completely PJS; You still have to code it inside of a webpage, but it works well. One difference? All trig functions and angular graphics work in radians only.</p>
+    </li>
+  </ul>
+</div>
+<div class="page" id="Projects">
+  <h1>Projects</h1>
+  <button id="create-project" onclick="dropCreator()">+ New Project</button>
+  <button id="delete-project" onclick="dropDel()">- Delete Project</button>
+  <div id="project-list"></div>
+  <div id="wall"></div>
+  <div id="dropdown-create">
+    <input id="new-project-name" placeholder="Project Name...">
+    <select id="project-type">
+      <option value="webpage">Webpage</option>
+      <option value="pjs">PJS program</option>
+    </select>
+    <button id="confirm-project" onclick="pushProject()">Create Project</button>
+    <button id="cancel-project" onclick="hideCreator()">Cancel</button>
+  </div>
+  <div id="dropdown-delete">
+    <input id="del-project-name" placeholder="Project Name...">
+    <button id="cancel-delete" onclick="hideDel()">Cancel</button>
+    <button id="c-delete-project" onclick="spliceProject()">Delete Project</button>
+  </div>
+</div>
+<div class="page" id="Guide">
+  <h1>User Guide</h1>
+  <h2>Using the Editor</h2>
+  <p>The editor is very simple to the Khan Academy editor. To check it out, start by creating a project in the Projects section. You can change the theme to any theme you want.</p>
+  <h2>Deploying your site to Khan Academy</h2>
+  <p>When you have finished making your project, click the Deploy button and follow the instructions on how to deploy it. Paste all the code into a Webpage. Not a PJS program. Your website will still be shown as a live website.</p>
+  <h2>How do I view my program as a live website?</h2>
+  <p>When you want to, press the Live Preview button to see it. As you code, the live website will be updated almost as fast as you can code.</p>
+  <h2>Why can't I make more than five projects?</h2>
+  <p>Evan Lewis said that <span style="color:red"><b><strong><em>it is okay to use local storage</em></strong></b></span> and that large ammounts of data could not be stored. That's why you can't have any more than five projects.</p>
+  <p>If you have any questions, feel free to ask me. Have fun.</p>
+
+</div>
+<div class="page" id="Credits">
+  <h1>Credits</h1>
+  <p>
+    Huge thanks to Steffan (@Steffan153) for sharing a tip with me for the preview and live preview. I could not have done it without him.<br>
+    Another Huge thanks goes to BLOBFISH (@BL0BF1SH) for finding out how to implement code editors. If he didn't show anyone, I wouldn't have ever made Khanhub.<br>
+    Thanks to pamela for creating the Processing template in a webpage. That is why you can now use PJS on KhanHub.<br><br>
+    All of the other code is owned and created by me. I hope you enjoy my greatest project so far.
+  </p>
+</div>
+<div class="page" id="Editor">
+  <h1 id = "program-title"></h1>
+  <div id="editor-wrapper">
+    <div id="editor" onkeyup="updatePreview()"></div>
+    <div id="result"></div>
+    <div id="option-bar">
+      <select id="choose-theme">
+        <option value="textmate">Choose Theme: default</option>
+        <option value="ambiance">ambiance</option>
+        <option value="chaos">chaos</option>
+        <option value="chrome">chrome</option>
+        <option value="clouds">clouds</option>
+        <option value="clouds_midnight">clouds midnight</option>
+        <option value="cobalt">cobalt</option>
+        <option value="crimson_editor">crimson editor</option>
+        <option value="dawn">dawn</option>
+        <option value="dracula">dracula</option>
+        <option value="eclipse">eclipse</option>
+        <option value="github">github</option>
+        <option value="gob">gob</option>
+        <option value="gruvbox">gruvbox</option>
+        <option value="idle_fingers">idle_fingers</option>
+        <option value="iplastic">iplastic</option>
+        <option value="katzenmilch">katzenmilch</option>
+        <option value="kr_theme">kr_theme</option>
+        <option value="kuroir">kuroir</option>
+        <option value="merbivore">merbivore</option>
+        <option value="merbivore_soft">mervibore_soft</option>
+        <option value="mono_industrial">mono industrial</option>
+        <option value="monokai">monokai</option>
+        <option value="nord_dark">nord_dark</option>
+        <option value="pastel_on_dark">pastel on dark</option>
+        <option value="solarized_dark">solarized dark</option>
+        <option value="solarized_light">solarized_light</option>
+        <option value="sqlserver">sqlserver</option>
+        <option value="terminal">terminal</option>
+        <option value="textmate">textmate</option>
+        <option value="tomorrow">tomorrow</option>
+        <option value="tomorrow_night">tomorrow_night</option>
+        <option value="tomorrow_night_blue">tomorrow night blue</option>
+        <option value="tomorrow_night_bright">tomorrow night bright</option>
+        <option value="tomorrow_night_eighties">tomorrow night 80s</option>
+        <option value="twilight">twilight</option>
+        <option value="vibrant_ink">vibrant ink</option>
+        <option value="xcode">xcode</option>
+      </select>
+      <div id="button-wrapper">
+        <button class="option" id="save-button" onclick="saveProgram()">Save</button>
+        <button class="option" id="run-program" onclick="updatePreview()">Run</button>
+        <button class="option" id="live-preview" onclick="live_preview()">Live Preview</button>
+        <button class="option" id="deploy-site" onclick="deploy_site()">Deploy</button>
+      </div>
+    </div>
+  </div>
+  <div id="cwall"></div>
+  <div id="dropdown-deploy">
+    <p>Copy all of this code and paste it into a KA Webpage Program. You can modify the screenshot to whatever you want. Screenshot modification Details will not be listed here.</p>
+    <textArea id="deployment-clipboard" readonly></textArea>
+    <button id="copy-button" onclick="copyToClipboard()">Copy to Clipboard</button>
+    <button id="close-deploy" onclick="hideDeploy()">✖︎</button>
+  </div>
+
+</div>
+
+<div id="navbar">
+  <div id="logo-name-wrapper">
+    <div id="name" onclick = "showPage('Home')">KhanHub</div>
+  </div>
+  <div id="hamburger" onclick="animateElement('#navigation-dropdown','openNav 1s 1')">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+  </div>
+</div>
+<div id="navigation-dropdown">
+  <button id="close" onclick="animateElement('#navigation-dropdown','closeNav 1s 1')">✖</button>
+  <button class="Home-button sb" style="margin-top:100px;">Home</button>
+  <button class="About-button sb">Features</button>
+  <button class="Guide-button sb">User Guide</button>
+  <button class="Credits-button sb">Credits</button>
+  <button class="Projects-button sb">Projects</button>
+</div>
+
+<div id="transition-cover3"></div>
+<div id="transition-cover4"></div>
+<div id="transition-cover2"></div>
+<div id="transition-cover">
+  <h1>KhanHub</h1>
+  <div id="loader"></div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/mode-html.min.js"></script>
+<script src="script.js" type="text/javascript"></script>
+</html>
