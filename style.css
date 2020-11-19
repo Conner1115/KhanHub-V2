@@ -1,0 +1,509 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Righteous&display=swap");
+
+:root {
+  --main-color: rgb(0, 100, 255);
+  --trans-op: rgba(255, 255, 255);
+}
+
+body,
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+}
+button:hover {
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.5;
+}
+button:disabled:hover {
+  cursor: not-allowed;
+}
+button,
+select,
+input,
+textArea {
+  outline: none;
+}
+textArea {
+  width: 80%;
+  height: 300px;
+  margin-left: 10%;
+  resize: none;
+  color: black;
+}
+h1,
+h2,
+h3 {
+  text-align: center;
+  font-family: "Righteous", Helvetica;
+}
+h4 {
+  font-family: "Righteous", Helvetica;
+}
+p {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+  text-align: justify;
+}
+ul {
+  margin-left: 15%;
+  box-shadow: -2px 0px 0px 0px var(--main-color);
+}
+li > p {
+  padding-left: 0%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.project {
+  width: 95%;
+  height: 50px;
+  padding-left: 5%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 30px;
+  background: white;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Righteous", Helvetica;
+  animation: aphov 0.25s 1;
+  animation-fill-mode: forwards;
+}
+.project:hover {
+  cursor: pointer;
+  animation: phov 0.25s 1;
+  animation-fill-mode: forwards;
+}
+.intro-hover-button {
+  font-family: "Righteous", Helvetica;
+  background: white;
+  width: 40%;
+  text-align: center;
+  color: var(--main-color);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  margin-left: 30%;
+  border: none;
+  border: solid var(--main-color) 5px;
+  /*margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;*/
+}
+.intro-hover-button:nth-of-type(1) {
+  transform:skewX(-30deg);
+}
+.intro-hover-button:nth-of-type(2) {
+  transform:skewX(30deg);
+}
+.intro-hover-button:nth-of-type(3) {
+  transform:skewX(-30deg);
+}
+.intro-hover-button > div{
+  transform:skewX(30deg);
+}
+
+.page {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  /*min-height:100%;*/
+  background: white;
+  margin-top: 70px;
+}
+.layer {
+  margin-left: 5px;
+  margin-top: 11px;
+  margin-bottom: 10px;
+  width: 50px;
+  height: 5px;
+  border-radius: 5px;
+  background: var(--main-color);
+}
+.sb {
+  width: 200px;
+  border: none;
+  background: rgb(240, 240, 240);
+  font-family: "Righteous", Helvetica;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.feature {
+  width: 30%;
+  height: 300px;
+  border: solid rgb(200, 200, 200) 1px;
+  border-radius: 10px;
+  margin: 1.7%;
+}
+.feature > img {
+  margin-top: 5%;
+  width: 30%;
+  margin-left: 35%;
+}
+
+#name:hover{
+  cursor:pointer;
+}
+#project-list {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 100px;
+  background: white;
+}
+#wall,
+#cwall {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 12;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0, 0.3);
+  display: none;
+}
+#dropdown-create,
+#dropdown-delete,
+#dropdown-deploy {
+  width: 50%;
+  left: 25%;
+  position: fixed;
+  background: white;
+  z-index: 13;
+  box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.2);
+  top: -100%;
+}
+#new-project-name,
+#del-project-name {
+  width: 70%;
+  margin-left: 10%;
+  border: none;
+  background: white;
+  font-family: "Montserrat";
+  padding: 5px;
+  box-shadow: 0px 2px 0px 0px var(--main-color);
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+#project-type {
+  width: 50%;
+  margin-left: 10%;
+  border: none;
+  background: var(--main-color);
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Montserrat";
+  color: white;
+  margin-bottom: 30px;
+}
+#confirm-project,
+#cancel-delete,
+#copy-button {
+  width: 30%;
+  margin-left: 10%;
+  border: none;
+  background: var(--main-color);
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Montserrat";
+  color: white;
+  margin-bottom: 20px;
+}
+#cancel-project,
+#c-delete-project {
+  width: 30%;
+  margin-left: 10%;
+  border: none;
+  background: rgb(200, 0, 0);
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Montserrat";
+  color: white;
+}
+#create-project {
+  width: 200px;
+  height: 50px;
+  padding: 10px;
+  color: black;
+  background: rgb(200, 200, 200);
+  font-family: "Righteous", Helvetica;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  position: absolute;
+  right: 10%;
+  margin-bottom: 20px;
+}
+#delete-project {
+  width: 200px;
+  height: 50px;
+  padding: 10px;
+  color: white;
+  background: rgb(200, 0, 0);
+  font-family: "Righteous", Helvetica;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  position: absolute;
+  left: 10%;
+}
+#feature-wrapper {
+  width: 100%;
+  display: flex;
+}
+#editor-wrapper {
+  width: 80%;
+  position: absolute;
+  border: solid rgb(200, 200, 200) 1px;
+  height: 415px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+#editor {
+  position: absolute;
+  top: 0px;
+  left: 0%;
+  width: 50%;
+}
+#result {
+  background: white;
+  border: solid rgb(200, 200, 200) 1px;
+  position: absolute;
+  top: -1px;
+  right: 0%;
+  width: 50%;
+  height: 415px;
+}
+#option-bar {
+  position: absolute;
+  top: 415px;
+  margin-left: -1px;
+  width: 100%;
+  height: 50px;
+  border: solid rgb(200, 200, 200) 1px;
+}
+#button-wrapper {
+  position: absolute;
+  right: 5px;
+}
+#option-bar > #button-wrapper > button {
+  height: 40px;
+  margin-top: 5px;
+  background: var(--main-color);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#option-bar > #choose-theme {
+  position: absolute;
+  left: 5px;
+  height: 40px;
+  margin-top: 5px;
+  background: var(--main-color);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+}
+#transition-cover {
+  width: 100%;
+  height: 50%;
+  position: fixed;
+  top: -75%;
+  left: 0px;
+  background: var(--trans-op);
+  z-index: 10;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
+}
+#transition-cover2 {
+  width: 100%;
+  height: 50%;
+  position: fixed;
+  bottom: -75%;
+  left: 0px;
+  background: var(--trans-op);
+  z-index: 10;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
+}
+#transition-cover3 {
+  width: 50%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -75%;
+  background: var(--trans-op);
+  z-index: 10;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
+}
+#transition-cover4 {
+  width: 50%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: -75%;
+  background: var(--trans-op);
+  z-index: 10;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
+}
+#loader {
+  width: 150px;
+  height: 150px;
+  border: transparent solid 5px;
+  border-right: var(--main-color) solid 5px;
+  border-left: var(--main-color) solid 5px;
+  border-top: white solid 5px;
+  border-bottom: white solid 5px;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-left: -80px;
+  margin-top: -80px;
+  animation: spin 1s infinite linear;
+  z-index: 15;
+}
+#transition-cover > h1 {
+  width: 150px;
+  height: 100px;
+  background: white;
+  font-size: 30px;
+  padding-top: 50px;
+  padding-bottom: -50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -75px;
+  margin-top: -75px;
+  z-index: 12;
+  box-shadow: 0px 5px 5px 0px rgb(0, 0, 0, 0.2);
+}
+#navbar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 8;
+  width: 100%;
+  height: 70px;
+  background: white;
+  box-shadow: 0px 0px 10px 0px rgb(0, 0, 0, 0.2);
+}
+#name {
+  font-size: 40px;
+  font-family: "Righteous";
+  margin: 10px;
+}
+#hamburger {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 60px;
+  height: 60px;
+  background: transparent;
+}
+#hamburger:hover {
+  cursor: pointer;
+}
+#navigation-dropdown {
+  position: fixed;
+  right: -200px;
+  top: 0px;
+  z-index: 9;
+  background: white;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: 100%;
+}
+#close,
+#close-deploy {
+  border: none;
+  font-size: 20px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+#description {
+  border: solid var(--main-color) 1px;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes switchTrans {
+  50% {
+    top: 0;
+  }
+}
+@keyframes switchTrans1 {
+  50% {
+    bottom: 0;
+  }
+}
+@keyframes switchTrans2 {
+  50% {
+    left: 0;
+  }
+}
+@keyframes switchTrans3 {
+  50% {
+    right: 0;
+  }
+}
+@keyframes openNav {
+  100% {
+    right: 0px;
+  }
+}
+@keyframes closeNav {
+  100% {
+    right: -200px;
+  }
+}
+@keyframes dropdown {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes slideup {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -100%;
+  }
+}
+@keyframes phov {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+@keyframes aphov {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
