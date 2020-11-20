@@ -157,6 +157,9 @@ editor.setOptions({
   minLines: 20
 });
 editor.setValue(processingTemplate);
+const Emmet = require("ace/ext/emmet");
+editor.setOption("enableEmmet", true);
+
 $("#editor").style.fontSize = 15 + "px";
 $("#result").srcdoc = editor.getValue();
 var result = document.createElement("iframe");
